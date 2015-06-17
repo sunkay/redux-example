@@ -11,6 +11,8 @@ module.exports = {
   context: srcPath,
   target: 'web',
   entry: [
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
     './index'
   ],
   output: {
@@ -19,7 +21,7 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    //new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
   resolve: {
@@ -29,7 +31,7 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: [nodeModulesPath],
-      loaders: ['babel'],
+      loaders: ['react-hot', 'babel'],
       include: [srcPath]
     }, {
       test: /\.html$/,

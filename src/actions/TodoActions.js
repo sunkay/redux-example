@@ -1,4 +1,9 @@
-import { ADD_TODO, DELETE_TODO, MARK_TODO } from '../constants/ActionTypes';
+import {
+  ADD_TODO, DESTROY_TODO, UPDATE_TODO,
+  TOGGLE_TODO, TOGGLEALL_TODO,
+   DESTROYCOMPLETED_TODO
+}
+from '../constants/ActionTypes';
 
 export function addTodo(text) {
   return {
@@ -7,16 +12,36 @@ export function addTodo(text) {
   };
 }
 
-export function deleteTodo(id) {
+export function destroyTodo(id) {
   return {
-    type: DELETE_TODO,
+    type: DESTROY_TODO,
     id
   };
 }
 
-export function markTodo(id) {
+export function toggleTodo(id) {
   return {
-    type: MARK_TODO,
+    type: TOGGLE_TODO,
     id
   };
+}
+
+export function toggleAllTodoToComplete(id) {
+  return {
+    type: TOGGLEALL_TODO
+  };
+}
+
+export function updateTodo(id, text) {
+  return {
+    type: UPDATE_TODO,
+    id,
+    text
+  };
+}
+
+export function destroyCompletedTodo() {
+  return {
+    type: DESTROYCOMPLETED_TODO
+  }
 }
